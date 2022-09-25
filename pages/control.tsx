@@ -7,20 +7,9 @@ import Head from 'next/head'
 
 
 const Note: NextPage = () => {
-  const [note, setNote] = useState('')
-  const [snapshot, loading, error] = useCollection(query(collection(firestore, 'notes'), where("acepted", "==", false)), {
+  const [snapshot] = useCollection(query(collection(firestore, 'notes'), where("acepted", "==", false)), {
     snapshotListenOptions: { includeMetadataChanges: true },
   })
-
-  const onChangueNote = (e: any) => setNote(e.target.value)
-
-  // const addNote = () => {
-  //   addDoc(collection(firestore, 'notes'), {
-  //     text: note,
-  //     created_at: new Date()
-  //   })
-  //   setNote('')
-  // }
 
   const removeNote = async (data: QueryDocumentSnapshot<DocumentData>) => {
     await deleteDoc(doc(firestore, 'notes', data.id))
@@ -63,14 +52,6 @@ const Note: NextPage = () => {
 
         </div>
       </div>
-      {/* <div className={'absolute bottom-2 right-2'}>
-        <button onClick={toConfig} className={'bg-gray-500 my-1 p-2 rounded-full text-white uppercase text-xs font-medium hover:bg-gray-600 active:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-400'}>
-          <svg className="h-8 w-8 text-white" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" />
-            <path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6-6a6 6 0 0 1 -8 -8l3.5 3.5" />
-          </svg>
-        </button>
-      </div> */}
     </div>
   )
 }
