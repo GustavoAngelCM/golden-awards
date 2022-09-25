@@ -1,0 +1,17 @@
+{
+  "name": "Golden Night Awards",
+  "short_name": "Golden awards",
+  "icons": [
+    {
+      "src": "/awards.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#ff4d00",
+  "background_color": "#ff9a00",
+  "scope": "/",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}
